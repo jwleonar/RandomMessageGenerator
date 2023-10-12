@@ -7,6 +7,28 @@ Generate random meal suggestions.
 1 main function calling object creation function and obj print method.
 */
 
+const meals = {
+    _breakfast: ['an Omelette', 'Bacon, Eggs, and Toast', 'a Smoked Salmon Bagel'],
+    _lunch: ['a Chicken Caesar', 'a Grilled Cheese', 'Carrots and Celery'],
+    _dinner: ['Chicken and Rice', 'Sushi', 'Salmon and Asparagus'],
+
+    get breakfast () {
+        return this._breakfast;
+    },
+
+    set breakfast (meal) {
+        this._breakfast.push(meal);
+    },
+
+    getMeal () {
+        let day = randomDayOfWeek();
+        let time = randomTimeOfDay();
+        let meal = randomMeal(time);
+
+        console.log(`You should eat ${meal} for ${time} on ${day}`);
+    }
+};
+
 const randomDayOfWeek = () => {
     const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     
@@ -18,3 +40,18 @@ const randomTimeOfDay = () => {
 
     return timesOfDay[Math.floor(Math.random() * 3)];
 };
+
+const randomMeal = (timeOfDay) => {
+
+    if (timeOfDay === 'Breakfast') {
+        return meals._breakfast[Math.floor(Math.random() * 3)];
+    } else if (timeOfDay === 'Lunch') {
+        return meals._lunch[Math.floor(Math.random() * 3)];
+    } else if (timeOfDay === 'Dinner') {
+        return meals._dinner[Math.floor(Math.random() * 3)];
+    } else {
+        return 'Invalid time of day.'
+    }
+};
+
+meals.getMeal();
