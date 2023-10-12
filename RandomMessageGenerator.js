@@ -13,3 +13,8 @@ const randomDayOfWeek = () => {
     return daysOfWeek[Math.floor(Math.random() * 7)];
 };
 
+const randomTimeOfDay = () => {
+    const timesOfDay = ['Breakfast', 'Lunch', 'Dinner'];
+
+    return timesOfDay[Math.floor(Math.random() * 3)];
+};
